@@ -40,11 +40,11 @@ class Spiel
         Raum draussen, hoersaal, cafeteria, labor, buero;
       
         // die R�ume erzeugen
-        draussen = new Raum("vor dem Haupteingang der Universit�t");
-        hoersaal = new Raum("in einem Vorlesungssaal");
-        cafeteria = new Raum("in der Cafeteria der Uni");
-        labor = new Raum("in einem Rechnerraum");
-        buero = new Raum("im Verwaltungsb�ro der Informatik");
+        draussen = new Raum("vor dem Haupteingang der Universit�t", "Stock", 20);
+        hoersaal = new Raum("in einem Vorlesungssaal", "Buch", 10);
+        cafeteria = new Raum("in der Cafeteria der Uni", "Gabel", 5);
+        labor = new Raum("in einem Rechnerraum", "Reagenzglas", 15);
+        buero = new Raum("im Verwaltungsb�ro der Informatik", "Stift", 5);
         
         // die Ausg�nge initialisieren
         draussen.setzeAusgang("east", hoersaal);

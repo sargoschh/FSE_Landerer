@@ -72,8 +72,8 @@ class Parser
     /***
      * Gibt eine Liste der bekannten Befehlswörter aus.
      */
-    public void zeigeBefehle() {
-        befehle.alleAusgeben();
+    public String zeigeBefehle() {
+        return befehle.gibBefehlsliste();
     }
 
 }

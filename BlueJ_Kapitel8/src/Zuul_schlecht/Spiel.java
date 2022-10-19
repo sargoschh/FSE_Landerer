@@ -137,7 +137,7 @@ public class Spiel
         System.out.println("Sie irren auf dem Unigelaende herum.");
         System.out.println();
         System.out.println("Ihnen stehen folgende Befehle zur Verfuegung:");
-        parser.zeigeBefehle();
+        System.out.println(parser.zeigeBefehle());
     }
 
     /**

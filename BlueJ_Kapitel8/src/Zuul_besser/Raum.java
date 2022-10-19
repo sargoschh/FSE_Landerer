@@ -21,17 +21,21 @@ import java.util.HashMap;
 class Raum 
 {
     private String beschreibung;
-    private HashMap<String, Raum> ausgaenge;        // die Ausg�nge dieses Raums
+    private HashMap<String, Raum> ausgaenge; // die Ausg�nge dieses Raums
+    private Gegenstand gegenstand;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
      * hat anfangs keine Ausg�nge. Eine Beschreibung hat die Form 
      * "in einer K�che" oder "auf einem Sportplatz".
-     * @param beschreibung  die Beschreibung des Raums
+     * @param beschreibungRaum  die Beschreibung des Raums
+     * @param beschreibungGegenstand die Beschreibung des Gegenstandes
+     * @param gewichtGegenstand das Gewicht des Gegenstandes
      */
-    public Raum(String beschreibung) 
+    public Raum(String beschreibungRaum, String beschreibungGegenstand, Integer gewichtGegenstand)
     {
-        this.beschreibung = beschreibung;
+        this.beschreibung = beschreibungRaum;
+        gegenstand = new Gegenstand(beschreibungGegenstand, gewichtGegenstand);
         ausgaenge = new HashMap<>();
     }
 
@@ -62,7 +66,7 @@ class Raum
      */
     public String gibLangeBeschreibung()
     {
-        return "Sie sind " + beschreibung + ".\n" + gibAusgaengeAlsString();
+        return "Sie sind " + beschreibung + ".\n" + gibAusgaengeAlsString() + "\n" + gegenstand.gibBeschreibungUndGewicht();
     }
 
     /**
@@ -72,7 +76,7 @@ class Raum
      */
     private String gibAusgaengeAlsString()
     {
-        String ergebnis = "Ausg�nge:";
+        String ergebnis = "Ausgaenge:";
         Set<String> keys = ausgaenge.keySet();
         for(String ausgang : keys)
             ergebnis += " " + ausgang;

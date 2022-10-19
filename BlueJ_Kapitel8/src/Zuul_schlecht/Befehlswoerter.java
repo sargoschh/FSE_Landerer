@@ -48,10 +48,11 @@ class Befehlswoerter
     /**
      * Gib alle gültigen Befehlswörter auf der Konsole aus.
      */
-    public void alleAusgeben(){
+    public String gibBefehlsliste(){
+        String befehle = "";
         for(String befehl : gueltigeBefehle) {
-            System.out.println(befehl + " ");
+            befehle += befehl + " ";
         }
-        System.out.println();
+        return befehle;
     }
 }
