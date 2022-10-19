@@ -4,18 +4,18 @@ package Zuul_schlecht;
  *  Dies ist die Hauptklasse der Anwendung "Die Welt von Zuul".
  *  "Die Welt von Zuul" ist ein sehr einfaches, textbasiertes
  *  Adventure-Game. Ein Spieler kann sich in einer Umgebung bewegen,
- *  mehr nicht. Das Zuul_schlecht.Spiel sollte auf jeden Fall ausgebaut werden,
+ *  mehr nicht. Das Spiel sollte auf jeden Fall ausgebaut werden,
  *  damit es interessanter wird!
  * 
  *  Zum Spielen muss eine Instanz dieser Klasse erzeugt werden und
  *  an ihr die Methode "spielen" aufgerufen werden.
  * 
  *  Diese Instanz erzeugt und initialisiert alle anderen Objekte
- *  der Anwendung: Sie legt alle R�ume und einen Zuul_schlecht.Parser an und
- *  startet das Zuul_schlecht.Spiel. Sie wertet auch die Befehle aus, die der
- *  Zuul_schlecht.Parser liefert, und sorgt f�r ihre Ausf�hrung.
+ *  der Anwendung: Sie legt alle Räume und einen Parser an und
+ *  startet das Spiel. Sie wertet auch die Befehle aus, die der
+ *  Parser liefert, und sorgt für ihre Ausführung.
  * 
- * @author  Michael K�lling und David J. Barnes
+ * @author  Michael Kölling und David J. Barnes
  * @version 2016.02.29
  */
 
@@ -25,7 +25,7 @@ public class Spiel
     private Raum aktuellerRaum;
         
     /**
-     * Erzeuge ein Zuul_schlecht.Spiel und initialisiere die interne Raumkarte.
+     * Erzeuge ein Spiel und initialisiere die interne Raumkarte.
      */
     public Spiel() 
     {
@@ -34,14 +34,14 @@ public class Spiel
     }
 
     /**
-     * Erzeuge alle R�ume und verbinde ihre Ausg�nge miteinander.
+     * Erzeuge alle Räume und verbinde ihre Ausgänge miteinander.
      */
     private void raeumeAnlegen()
     {
         Raum draussen, hoersaal, cafeteria, labor, buero, keller;
       
         // die R�ume erzeugen
-        draussen = new Raum("vor dem Haupteingang der Universitüt");
+        draussen = new Raum("vor dem Haupteingang der Universitaet");
         hoersaal = new Raum("in einem Vorlesungssaal");
         cafeteria = new Raum("in der Cafeteria der Uni");
         labor = new Raum("in einem Rechnerraum");
@@ -60,11 +60,11 @@ public class Spiel
         buero.setzeAusgaenge("down", keller);
         keller.setzeAusgaenge("up", buero);
 
-        aktuellerRaum = draussen;  // das Zuul_schlecht.Spiel startet draussen
+        aktuellerRaum = draussen;  // das Spiel startet draussen
     }
 
     /**
-     * Die Hauptmethode zum Spielen. L�uft bis zum Ende des Spiels
+     * Die Hauptmethode zum Spielen. Läuft bis zum Ende des Spiels
      * in einer Schleife.
      */
     public void spielen() 
@@ -72,33 +72,33 @@ public class Spiel
         willkommenstextAusgeben();
 
         // Die Hauptschleife. Hier lesen wir wiederholt Befehle ein
-        // und f�hren sie aus, bis das Zuul_schlecht.Spiel beendet wird.
+        // und führen sie aus, bis das Spiel beendet wird.
                 
         boolean beendet = false;
         while (! beendet) {
             Befehl befehl = parser.liefereBefehl();
             beendet = verarbeiteBefehl(befehl);
         }
-        System.out.println("Danke f�r dieses Zuul_schlecht.Spiel. Auf Wiedersehen.");
+        System.out.println("Danke für dieses Spiel. Auf Wiedersehen.");
     }
 
     /**
-     * Einen Begr��ungstext f�r den Spieler ausgeben.
+     * Einen Begrüßungstext für den Spieler ausgeben.
      */
     private void willkommenstextAusgeben()
     {
         System.out.println();
         System.out.println("Willkommen zu Zuul!");
-        System.out.println("Zuul ist ein neues, unglaublich langweiliges Zuul_schlecht.Spiel.");
+        System.out.println("Zuul ist ein neues, unglaublich langweiliges Spiel.");
         System.out.println("Tippen Sie 'help', wenn Sie Hilfe brauchen.");
         System.out.println();
         raumInfoAusgeben();
     }
 
     /**
-     * Verarbeite einen gegebenen Zuul_schlecht.Befehl (f�hre ihn aus).
-     * @param befehl   der zu verarbeitende Zuul_schlecht.Befehl.
-     * @return true    wenn der Zuul_schlecht.Befehl das Zuul_schlecht.Spiel beendet, false sonst
+     * Verarbeite einen gegebenen Befehl (führe ihn aus).
+     * @param befehl   der zu verarbeitende Befehl.
+     * @return true    wenn der Befehl das Spiel beendet, false sonst
      */
     private boolean verarbeiteBefehl(Befehl befehl) 
     {
@@ -111,11 +111,13 @@ public class Spiel
         String befehlswort = befehl.gibBefehlswort();
         if (befehlswort.equals("help")) {
             hilfstextAusgeben();
-        }
-        else if (befehlswort.equals("go")) {
+        } else if (befehlswort.equals("go")) {
             wechsleRaum(befehl);
-        }
-        else if (befehlswort.equals("quit")) {
+        } else if (befehlswort.equals("look")) {
+            umsehen();
+        } else if (befehlswort.equals("eat")) {
+            System.out.println("Sie haben nun gegessen und sind nicht mehr hungrig!");
+        } else if (befehlswort.equals("quit")) {
             moechteBeenden = beenden(befehl);
         }
         
@@ -127,38 +129,38 @@ public class Spiel
     /**
      * Gib Hilfsinformationen aus.
      * Hier geben wir eine etwas alberne und unklare Beschreibung
-     * aus, sowie eine Liste der Befehlsw�rter.
+     * aus, sowie eine Liste der Befehlswörter.
      */
     private void hilfstextAusgeben() 
     {
         System.out.println("Sie haben sich verlaufen. Sie sind allein.");
-        System.out.println("Sie irren auf dem Unigel�nde herum.");
+        System.out.println("Sie irren auf dem Unigelaende herum.");
         System.out.println();
-        System.out.println("Ihnen stehen folgende Befehle zur Verf�gung:");
-        System.out.println("   go quit help");
+        System.out.println("Ihnen stehen folgende Befehle zur Verfuegung:");
+        parser.zeigeBefehle();
     }
 
     /**
      * Versuche, in eine Richtung zu gehen. Wenn es einen Ausgang gibt,
-     * wechsele in den neuen Zuul_schlecht.Raum, ansonsten gib eine Fehlermeldung
+     * wechsele in den neuen Raum, ansonsten gib eine Fehlermeldung
      * aus.
      */
     private void wechsleRaum(Befehl befehl) 
     {
         if(!befehl.hatZweitesWort()) {
             // Gibt es kein zweites Wort, wissen wir nicht, wohin...
-            System.out.println("Wohin m�chten Sie gehen?");
+            System.out.println("Wohin moechten Sie gehen?");
             return;
         }
 
         String richtung = befehl.gibZweitesWort();
 
-        // Wir versuchen, den Zuul_schlecht.Raum zu verlassen.
+        // Wir versuchen, den Raum zu verlassen.
         Raum naechsterRaum = aktuellerRaum.gibAusgang(richtung);
 
 
         if (naechsterRaum == null) {
-            System.out.println("Dort ist keine T�r!");
+            System.out.println("Dort ist keine Tuer!");
         }
         else {
             aktuellerRaum = naechsterRaum;
@@ -168,15 +170,22 @@ public class Spiel
 
     private void raumInfoAusgeben() {
     
-        System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-        aktuellerRaum.gibAusgaengeAlsString();
+        System.out.println(aktuellerRaum.gibLangeBeschreibung());
         System.out.println();
+    }
+
+    /**
+     * Gibt der Benutzer "look" ein, wird diese Methode aufgerufen - der Benutzer
+     * erhält eine Beschreibung seiner aktuellen Umgebung.
+     */
+    private void umsehen() {
+        System.out.println(aktuellerRaum.gibLangeBeschreibung());
     }
     
     /**
-     * "quit" wurde eingegeben. �berpr�fe den Rest des Befehls,
-     * ob das Zuul_schlecht.Spiel wirklich beendet werden soll.
-     * @return true  wenn der Zuul_schlecht.Befehl das Zuul_schlecht.Spiel beendet, false sonst
+     * "quit" wurde eingegeben. überprüfe den Rest des Befehls,
+     * ob das Spiel wirklich beendet werden soll.
+     * @return true  wenn der Befehl das Spiel beendet, false sonst
      */
     private boolean beenden(Befehl befehl) 
     {
@@ -185,7 +194,7 @@ public class Spiel
             return false;
         }
         else {
-            return true;  // Das Zuul_schlecht.Spiel soll beendet werden.
+            return true;  // Das Spiel soll beendet werden.
         }
     }
 }

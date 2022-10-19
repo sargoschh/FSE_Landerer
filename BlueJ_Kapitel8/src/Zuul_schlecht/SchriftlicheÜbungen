@@ -1,0 +1,10 @@
+Aufgabe 8.10:
+Die Methode gibAusgaengeAlsString() erstellt zunächst einen String, inden die Schlussendliche Ausgabe gespeichert
+wird. Mit einer for-Schleife itterieren wir anschließend durch das keySet der Ausgänge des aktuellen Raums.
+Hat der aktuelle Raum z.B. die Ausgänge Ost und West, so sind diese jeweils als key gespeichert.
+Indem wir durch dieses keySet itterieren, holen wir uns nacheinander die Ausgänge heraus.
+Die Ausgabe würde dann so aussehen: "Ausgänge: east west"
+
+Aufgabe 8.17:
+Ja, die Klasse Spiel müsste dennoch geändert werden, da sie ja noch nicht weiß, was bei einem neuen Befehl zutun ist.
+Dementsprechend müsste also weiterhin die Methode verarbeiteBefehl() geändert werden.

@@ -7,27 +7,27 @@ import java.util.Scanner;
  * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes 
  * Adventure-Game. 
  * 
- * Dieser Zuul_schlecht.Parser liest Benutzereingaben und wandelt sie in
- * Befehle f�r das Adventure-Game um. Bei jedem Aufruf
+ * Dieser Parser liest Benutzereingaben und wandelt sie in
+ * Befehle für das Adventure-Game um. Bei jedem Aufruf
  * liest er eine Zeile von der Konsole und versucht, diese als
- * einen Zuul_schlecht.Befehl aus bis zu zwei W�rtern zu interpretieren. Er
- * liefert den Zuul_schlecht.Befehl als ein Objekt der Klasse Zuul_schlecht.Befehl zur�ck.
+ * einen Befehl aus bis zu zwei Wörtern zu interpretieren. Er
+ * liefert den Befehl als ein Objekt der Klasse Befehl zurück.
  * 
- * Der Zuul_schlecht.Parser verf�gt �ber einen Satz an bekannten Befehlen. Er
+ * Der Parser verfügt über einen Satz an bekannten Befehlen. Er
  * vergleicht die Eingabe mit diesen Befehlen. Wenn die Eingabe
- * keinen bekannten Zuul_schlecht.Befehl enth�lt, dann liefert der Zuul_schlecht.Parser ein als
- * unbekannter Zuul_schlecht.Befehl gekennzeichnetes Objekt zur�ck.
+ * keinen bekannten Befehl enthält, dann liefert der Parser ein als
+ * unbekannter Befehl gekennzeichnetes Objekt zurück.
  * 
- * @author  Michael K�lling und David J. Barnes
+ * @author  Michael Kölling und David J. Barnes
  * @version 2016.02.29
  */
 class Parser 
 {
-    private Befehlswoerter befehle;  // h�lt die g�ltigen Befehlsw�rter
-    private Scanner leser;           // Lieferant f�r eingegebene Befehle
+    private Befehlswoerter befehle;  // hält die gültigen Befehlswörter
+    private Scanner leser;           // Lieferant für eingegebene Befehle
 
     /**
-     * Erzeuge einen Zuul_schlecht.Parser, der Befehle von der Konsole einliest.
+     * Erzeuge einen Parser, der Befehle von der Konsole einliest.
      */
     public Parser() 
     {
@@ -36,7 +36,7 @@ class Parser
     }
 
     /**
-     * @return Den n�chsten Zuul_schlecht.Befehl des Benutzers.
+     * @return Den nächsten Befehl des Benutzers.
      */
     public Befehl liefereBefehl() 
     {
@@ -67,6 +67,13 @@ class Parser
         else {
             return new Befehl(null, wort2);
         }
+    }
+
+    /***
+     * Gibt eine Liste der bekannten Befehlswörter aus.
+     */
+    public void zeigeBefehle() {
+        befehle.alleAusgeben();
     }
 
 }

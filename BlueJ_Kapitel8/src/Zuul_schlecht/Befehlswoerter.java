@@ -5,11 +5,11 @@ package Zuul_schlecht;
  * "Die Welt von Zuul" ist ein sehr einfaches textbasiertes 
  * Adventure-Game.
  * 
- * Diese Klasse h�lt eine Aufz�hlung aller Befehlsw�rter, die dem
- * Zuul_schlecht.Spiel bekannt sind. Mit ihrer Hilfe werden eingetippte Befehle
+ * Diese Klasse hält eine Aufzählung aller Befehlswörter, die dem
+ * Spiel bekannt sind. Mit ihrer Hilfe werden eingetippte Befehle
  * erkannt.
  *
- * @author  Michael K�lling und David J. Barnes
+ * @author  Michael Kölling und David J. Barnes
  * @version 2016.02.29
  */
 
@@ -17,11 +17,11 @@ class Befehlswoerter
 {
     // ein konstantes Array mit den g�ltigen Befehlsw�rtern
     private static final String gueltigeBefehle[] = {
-        "go", "quit", "help"
+        "go", "quit", "help", "look", "eat"
     };
 
     /**
-     * Konstruktor - initialisiere die Befehlsw�rter.
+     * Konstruktor - initialisiere die Befehlswörter.
      */
     public Befehlswoerter()
     {
@@ -29,10 +29,10 @@ class Befehlswoerter
     }
 
     /**
-     * Pr�fe, ob eine gegebene Zeichenkette ein g�ltiger
-     * Zuul_schlecht.Befehl ist.
-     * @return 'true', wenn die gegebene Zeichenkette ein g�ltiger
-     * Zuul_schlecht.Befehl ist, 'false' sonst.
+     * Prüfe, ob eine gegebene Zeichenkette ein gültiger
+     * Befehl ist.
+     * @return 'true', wenn die gegebene Zeichenkette ein gültiger
+     * Befehl ist, 'false' sonst.
      */
     public boolean istBefehl(String eingabe)
     {
@@ -41,7 +41,17 @@ class Befehlswoerter
                 return true;
         }
         // Wenn wir hierher gelangen, wurde die Eingabe nicht
-        // in den Befehlsw�rter gefunden.
+        // in den Befehlswörter gefunden.
         return false;
+    }
+
+    /**
+     * Gib alle gültigen Befehlswörter auf der Konsole aus.
+     */
+    public void alleAusgeben(){
+        for(String befehl : gueltigeBefehle) {
+            System.out.println(befehl + " ");
+        }
+        System.out.println();
     }
 }
