@@ -1,4 +1,5 @@
 package Zuul_besser;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
 
@@ -22,7 +23,7 @@ class Raum
 {
     private String beschreibung;
     private HashMap<String, Raum> ausgaenge; // die Ausg�nge dieses Raums
-    private Gegenstand gegenstand;
+    private ArrayList<Gegenstand> gegenstand;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
@@ -35,7 +36,8 @@ class Raum
     public Raum(String beschreibungRaum, String beschreibungGegenstand, Integer gewichtGegenstand)
     {
         this.beschreibung = beschreibungRaum;
-        gegenstand = new Gegenstand(beschreibungGegenstand, gewichtGegenstand);
+        gegenstand = new ArrayList<>();
+        gegenstandAblegen(beschreibungGegenstand, gewichtGegenstand);
         ausgaenge = new HashMap<>();
     }
 
@@ -58,6 +60,16 @@ class Raum
         return beschreibung;
     }
 
+    public void gegenstandAblegen(String beschreibung, Integer gewicht) {
+
+        this.gegenstand.add(new Gegenstand(beschreibung, gewicht));
+    }
+
+    public void gegenstandAblegen(Gegenstand gegenstand) {
+
+        this.gegenstand.add(gegenstand);
+    }
+
     /**
      * Liefere eine lange Beschreibung dieses Raums, in der Form:
      *     Sie sind in der K�che.
@@ -66,7 +78,15 @@ class Raum
      */
     public String gibLangeBeschreibung()
     {
-        return "Sie sind " + beschreibung + ".\n" + gibAusgaengeAlsString() + "\n" + gegenstand.gibBeschreibungUndGewicht();
+        return "Sie sind " + beschreibung + ".\n" + gibAusgaengeAlsString() + "\n" + gibGegenstandListe();
+    }
+
+    public String gibGegenstandListe() {
+        String ausgabe = "";
+        for (Gegenstand g : gegenstand) {
+            ausgabe += g.gibBeschreibungUndGewicht() + "\n";
+        }
+        return ausgabe;
     }
 
     /**

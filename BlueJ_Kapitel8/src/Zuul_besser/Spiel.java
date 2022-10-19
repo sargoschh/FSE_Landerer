@@ -1,4 +1,7 @@
 package Zuul_besser;
+
+import java.util.Stack;
+
 /**
  *  Dies ist die Hauptklasse der Anwendung "Die Welt von Zuul".
  *  "Die Welt von Zuul" ist ein sehr einfaches, textbasiertes
@@ -22,6 +25,7 @@ class Spiel
 {
     private Parser parser;
     private Raum aktuellerRaum;
+    private Stack<Raum> letzterRaum;
         
     /**
      * Erzeuge ein Spiel und initialisiere die interne Raumkarte.
@@ -29,6 +33,7 @@ class Spiel
     public Spiel() 
     {
         raeumeAnlegen();
+        letzterRaum = new Stack<>();
         parser = new Parser();
     }
 
@@ -40,11 +45,12 @@ class Spiel
         Raum draussen, hoersaal, cafeteria, labor, buero;
       
         // die R�ume erzeugen
-        draussen = new Raum("vor dem Haupteingang der Universit�t", "Stock", 20);
+        draussen = new Raum("vor dem Haupteingang der Universitaet", "Stock", 20);
         hoersaal = new Raum("in einem Vorlesungssaal", "Buch", 10);
         cafeteria = new Raum("in der Cafeteria der Uni", "Gabel", 5);
         labor = new Raum("in einem Rechnerraum", "Reagenzglas", 15);
-        buero = new Raum("im Verwaltungsb�ro der Informatik", "Stift", 5);
+        buero = new Raum("im Verwaltungsbuero der Informatik", "Stift", 5);
+        draussen.gegenstandAblegen(new Gegenstand("Stein", 50));
         
         // die Ausg�nge initialisieren
         draussen.setzeAusgang("east", hoersaal);
@@ -61,6 +67,7 @@ class Spiel
         buero.setzeAusgang("west", labor);
 
         aktuellerRaum = draussen;  // das Spiel startet draussen
+
     }
 
     /**
@@ -79,7 +86,7 @@ class Spiel
             Befehl befehl = parser.liefereBefehl();
             beendet = verarbeiteBefehl(befehl);
         }
-        System.out.println("Danke f�r dieses Spiel. Auf Wiedersehen.");
+        System.out.println("Danke fuer dieses Spiel. Auf Wiedersehen.");
     }
 
     /**
@@ -113,11 +120,13 @@ class Spiel
         String befehlswort = befehl.gibBefehlswort();
         if (befehlswort.equals("help")) {
             hilfstextAusgeben();
-        }
-        else if (befehlswort.equals("go")) {
+        } else if (befehlswort.equals("go")) {
             wechsleRaum(befehl);
-        }
-        else if (befehlswort.equals("quit")) {
+        } else if (befehlswort.equals("look")) {
+            System.out.println(aktuellerRaum.gibLangeBeschreibung());
+        } else if (befehlswort.equals("back")) {
+            goBack();
+        } else if (befehlswort.equals("quit")) {
             moechteBeenden = beenden(befehl);
         }
         // ansonsten: Befehl nicht erkannt.
@@ -134,9 +143,9 @@ class Spiel
     private void hilfstextAusgeben() 
     {
         System.out.println("Sie haben sich verlaufen. Sie sind allein.");
-        System.out.println("Sie irren auf dem Unigel�nde herum.");
+        System.out.println("Sie irren auf dem Unigelaende herum.");
         System.out.println();
-        System.out.println("Ihnen stehen folgende Befehle zur Verf�gung:");
+        System.out.println("Ihnen stehen folgende Befehle zur Verfuegung:");
         parser.zeigeBefehle();
     }
 
@@ -149,7 +158,7 @@ class Spiel
     {
         if(!befehl.hatZweitesWort()) {
             // Gibt es kein zweites Wort, wissen wir nicht, wohin...
-            System.out.println("Wohin m�chten Sie gehen?");
+            System.out.println("Wohin moechten Sie gehen?");
             return;
         }
 
@@ -162,8 +171,20 @@ class Spiel
             System.out.println("Dort ist keine T�r!");
         }
         else {
+            letzterRaum.push(aktuellerRaum);
             aktuellerRaum = naechsterRaum;
             System.out.println(aktuellerRaum.gibLangeBeschreibung());
+        }
+    }
+
+    private void goBack()
+    {
+        if(!letzterRaum.empty()) {
+            aktuellerRaum = letzterRaum.peek();
+            letzterRaum.remove(aktuellerRaum);
+            System.out.println(aktuellerRaum.gibLangeBeschreibung());
+        } else {
+            System.out.println("Sie koennen nicht zurueck gehen!");
         }
     }
 
