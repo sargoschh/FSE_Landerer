@@ -38,21 +38,27 @@ public class Spiel
      */
     private void raeumeAnlegen()
     {
-        Raum draussen, hoersaal, cafeteria, labor, buero;
+        Raum draussen, hoersaal, cafeteria, labor, buero, keller;
       
         // die R�ume erzeugen
-        draussen = new Raum("vor dem Haupteingang der Universit�t");
+        draussen = new Raum("vor dem Haupteingang der Universitüt");
         hoersaal = new Raum("in einem Vorlesungssaal");
         cafeteria = new Raum("in der Cafeteria der Uni");
         labor = new Raum("in einem Rechnerraum");
-        buero = new Raum("im Verwaltungsb�ro der Informatik");
+        buero = new Raum("im Verwaltungsbüro der Informatik");
+        keller = new Raum("im Keller");
         
         // die Ausg�nge initialisieren
-        draussen.setzeAusgaenge(null, hoersaal, labor, cafeteria);
-        hoersaal.setzeAusgaenge(null, null, null, draussen);
-        cafeteria.setzeAusgaenge(null, draussen, null, null);
-        labor.setzeAusgaenge(draussen, buero, null, null);
-        buero.setzeAusgaenge(null, null, null, labor);
+        draussen.setzeAusgaenge("east", hoersaal);
+        draussen.setzeAusgaenge("south", labor);
+        draussen.setzeAusgaenge("west", cafeteria);
+        hoersaal.setzeAusgaenge("west", draussen);
+        cafeteria.setzeAusgaenge("east", draussen);
+        labor.setzeAusgaenge("north", draussen);
+        labor.setzeAusgaenge("east", buero);
+        buero.setzeAusgaenge("west", labor);
+        buero.setzeAusgaenge("down", keller);
+        keller.setzeAusgaenge("up", buero);
 
         aktuellerRaum = draussen;  // das Zuul_schlecht.Spiel startet draussen
     }

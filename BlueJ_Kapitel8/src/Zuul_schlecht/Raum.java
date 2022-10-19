@@ -1,6 +1,7 @@
 package Zuul_schlecht;
 
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Diese Klasse modelliert R�ume in der Welt von Zuul.
@@ -38,26 +39,10 @@ public class Raum
      * Definiere die Ausg�nge dieses Raums. Jede Richtung
      * f�hrt entweder in einen anderen Zuul_schlecht.Raum oder ist 'null'
      * (kein Ausgang).
-     * @param norden  der Nordausgang
-     * @param osten   der Ostausgang
-     * @param sueden  der Südausgang
-     * @param westen  der Westausgang
      */
-    public void setzeAusgaenge(Raum norden, Raum osten,
-                               Raum sueden, Raum westen) 
+    public void setzeAusgaenge(String richtung, Raum nachbar)
     {
-        if(norden != null) {
-            ausgaenge.put("north", norden);
-        }
-        if(osten != null) {
-            ausgaenge.put("east", osten);
-        }
-        if(sueden != null) {
-            ausgaenge.put("south", sueden);
-        }
-        if(westen != null) {
-            ausgaenge.put("west", westen);
-        }
+        this.ausgaenge.put(richtung, nachbar);
     }
 
     public Raum gibAusgang(String richtung) {
@@ -78,13 +63,19 @@ public class Raum
      *
      * */
     public String gibAusgaengeAlsString() {
-        String ausgabe = "Ausgänge: ";
+        String ausgabe = "Ausgänge:";
         for (String s : this.ausgaenge.keySet()) {
-            if(this.ausgaenge.get(s) != null) {
-                ausgabe = ausgabe + s + " ";
-            }
+
+                ausgabe += " " + s;
+
         }
         return ausgabe;
     }
+    /*Aufgabe 8.10:
+    * Die Methode gibAusgaengeAlsString() erstellt zunächst einen String, inden die Schlussendliche Ausgabe gespeichert
+    * wird. Mit einer for-Schleife itterieren wir anschließend durch das keySet der Ausgänge des aktuellen Raums.
+    * Hat der aktuelle Raum z.B. die Ausgänge Ost und West, so sind diese jeweils als key gespeichert.
+    * Indem wir durch dieses keySet itterieren, holen wir uns nacheinander die Ausgänge heraus.
+    * Die Ausgabe würde dann so aussehen: "Ausgänge: east west*/
 
 }
