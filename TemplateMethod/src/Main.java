@@ -1,4 +1,14 @@
+/**
+ * Bei Verwendung der Template Method gibt eine abstrakte Klasse definierte Wege/Vorlagen zur Ausführung ihrer
+ * Methoden vor. Die Unterklassen können diese Methoden dann nach Bedarf überschreiben. Der Aufruf der Methode muss
+ * jedoch auf die gleiche Weise erfolgen, wie von der abstrakten Klasse vorgegeben.
+ */
 public class Main {
+    /**
+     * Es werden nun also vier Tiere erstellt, alle über denselben Mutterklassenkonstruktor.
+     * Alle Tiere rufen dann dieselbe Methode, animalIntroduceItself() auf - die Ausgabe unterscheidet sich
+     * jedoch bei jedem Tier.
+     */
     public static void main(String[] args) {
 
         Animal animal1 = new Cat("Cindy");
