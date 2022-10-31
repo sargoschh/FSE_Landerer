@@ -2,6 +2,8 @@
  * Bei Verwendung der Template Method gibt eine abstrakte Klasse definierte Wege/Vorlagen zur Ausführung ihrer
  * Methoden vor. Die Unterklassen können diese Methoden dann nach Bedarf überschreiben. Der Aufruf der Methode muss
  * jedoch auf die gleiche Weise erfolgen, wie von der abstrakten Klasse vorgegeben.
+ *
+ * https://www.youtube.com/watch?v=aR1B8MlwbRI - Video zur Erklärung für mich
  */
 public class Main {
     /**
