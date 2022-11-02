@@ -1,3 +1,6 @@
+/**
+ * Wird benötigt, um mit dem StandardReader später Bücher im .azw Format zu öffnen.
+ */
 public class AZWReader implements AdvancedEReader{
 
 
