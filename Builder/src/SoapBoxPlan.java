@@ -3,9 +3,9 @@
  */
 public interface SoapBoxPlan {
 
-    public void setSoapBoxWheel(String wheel);
-    public void setSoapBoxSeat(String seat);
-    public void setSoapBoxTires(String tires);
-    public void setSoapBoxTorso(String torso);
+    void setSoapBoxWheel(String wheel);
+    void setSoapBoxSeat(String seat);
+    void setSoapBoxTires(String tires);
+    void setSoapBoxTorso(String torso);
 
 }
