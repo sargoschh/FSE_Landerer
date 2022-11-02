@@ -1,5 +1,14 @@
+/**
+ *
+ */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Reader reader = new Reader();
+
+        reader.open("epub", "Eragon");
+        reader.open("pdf", "Herr der Ringe");
+        reader.open("azw", "Harry Potter");
+        reader.open("txt", "Biene Maja");
     }
 }
