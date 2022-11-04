@@ -21,6 +21,10 @@ public class Main {
 
         System.out.println(decorator1.umrechnen("sek", 95));
 
+        rechnerSEK.setFaktor(50);
+
+        System.out.println(rechnerDollar.umrechnen("sek", 95));
+
 
     }
 }

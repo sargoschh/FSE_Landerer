@@ -1,12 +1,14 @@
 public class EURO2Yen extends WR {
-
-    private WR nextConverter;
     private final String yen = "YEN";
-    private final double kursYen = 144.9060;
+    private double kursYen = 144.9060;
 
     @Override
     public double getFaktor() {
         return this.kursYen;
+    }
+
+    public void setFaktor(double faktor) {
+        this.kursYen = faktor;
     }
 
     @Override

@@ -16,6 +16,11 @@ public class DecoraterFixFees extends WRDecorator{
     }
 
     @Override
+    public void setFaktor(double faktor) {
+        super.setFaktor(faktor);
+    }
+
+    @Override
     public boolean zustaendig(String variante) {
         return super.zustaendig(variante);
     }

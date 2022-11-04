@@ -12,6 +12,10 @@ public abstract class WRDecorator extends WR {
     }
 
     public double getFaktor(){return this.decoratedConverter.getFaktor();}
+    @Override
+    public void setFaktor(double faktor) {
+        this.decoratedConverter.setFaktor(faktor);
+    }
     public boolean zustaendig(String variante) {
         return this.decoratedConverter.zustaendig(variante);
     }

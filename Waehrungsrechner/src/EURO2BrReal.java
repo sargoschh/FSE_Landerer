@@ -1,12 +1,14 @@
 public class EURO2BrReal extends WR {
-
-    private WR nextConverter;
     private final String real = "BRL";
-    private final double kursReal = 4.9624;
+    private double kursReal = 4.9624;
 
     @Override
     public double getFaktor() {
         return this.kursReal;
+    }
+
+    public void setFaktor(double faktor) {
+        this.kursReal = faktor;
     }
 
     @Override
