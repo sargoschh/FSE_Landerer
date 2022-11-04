@@ -1,11 +1,11 @@
 public class EURO2Dollar extends WR{
 
-    private WR nextConverter;
     private final String dollar = "USD";
+    private final double kursDollar = 0.9794;
 
     @Override
     public double getFaktor() {
-        return 0;
+        return this.kursDollar;
     }
 
     @Override
