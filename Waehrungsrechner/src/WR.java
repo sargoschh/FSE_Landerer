@@ -1,22 +1,21 @@
 public abstract class WR implements IUmrechnen{
 
-    private WR nextConverter;
+    private IUmrechnen nextConverter;
+    private double converted;
 
     public double umrechnen(String variante, double betrag){
 
-        double converted = 0;
         if(this.zustaendig(variante)) {
-            converted = betrag * this.getFaktor();
-            return converted;
+            this.converted = betrag * this.getFaktor();
+            return this.converted;
         } else if(this.nextConverter != null){
             return this.nextConverter.umrechnen(variante, betrag);
         } else {
             return 0;
         }
-
     }
 
-    public void setNextConverter(WR nextConverter) {
+    public void setNextConverter(IUmrechnen nextConverter) {
         this.nextConverter = nextConverter;
     }
 }

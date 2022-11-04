@@ -2,16 +2,24 @@ public class Main {
     public static void main(String[] args) {
 
 
-        WR rechnerDollar = new EURO2Dollar();
-        WR rechnerYen = new EURO2Yen();
-        WR rechnerSEK = new EURO2SEK();
-        WR rechnerReal = new EURO2BrReal();
+        IUmrechnen rechnerDollar = new EURO2Dollar();
+        IUmrechnen rechnerYen = new EURO2Yen();
+        IUmrechnen rechnerSEK = new EURO2SEK();
+        IUmrechnen rechnerReal = new EURO2BrReal();
 
         rechnerDollar.setNextConverter(rechnerYen);
         rechnerYen.setNextConverter(rechnerSEK);
         rechnerSEK.setNextConverter(rechnerReal);
 
         System.out.println(rechnerDollar.umrechnen("sek", 95));
+
+        WRDecorator decorator = new DecoraterFixFees(rechnerDollar);
+
+        System.out.println(decorator.umrechnen("sek", 95));
+
+        WRDecorator decorator1 = new DecoratorFeesInPercent(rechnerDollar);
+
+        System.out.println(decorator1.umrechnen("sek", 95));
 
 
     }
