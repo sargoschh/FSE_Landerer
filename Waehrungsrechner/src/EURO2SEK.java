@@ -1,4 +1,4 @@
-public class EURO2SEK extends WR{
+public class EURO2SEK extends WR {
 
     private WR nextConverter;
     private final String kronen = "SEK";

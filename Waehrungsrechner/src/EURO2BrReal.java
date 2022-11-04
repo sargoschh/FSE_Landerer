@@ -1,4 +1,4 @@
-public class EURO2BrReal extends WR{
+public class EURO2BrReal extends WR {
 
     private WR nextConverter;
     private final String real = "BRL";

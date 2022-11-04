@@ -1,4 +1,4 @@
-public class EURO2Dollar extends WR{
+public class EURO2Dollar extends WR {
 
     private final String dollar = "USD";
     private final double kursDollar = 0.9794;

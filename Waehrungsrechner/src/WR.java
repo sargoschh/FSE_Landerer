@@ -1,4 +1,4 @@
-public abstract class WR implements IUmrechnen{
+public abstract class WR implements IUmrechnen {
 
     private IUmrechnen nextConverter;
     private double converted;

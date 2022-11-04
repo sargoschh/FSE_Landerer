@@ -1,4 +1,4 @@
-public class EURO2Yen extends WR{
+public class EURO2Yen extends WR {
 
     private WR nextConverter;
     private final String yen = "YEN";
