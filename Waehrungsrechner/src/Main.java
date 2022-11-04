@@ -25,6 +25,18 @@ public class Main {
 
         System.out.println(rechnerDollar.umrechnen("sek", 95));
 
+        System.out.println();
+
+        System.out.println(rechnerDollar.umrechnen("brl", 95));
+
+        IUmrechnen converterBRL = new EURO2BrReal.Builder()
+                .setFaktor(8)
+                .setNextConverter(new EURO2Yen())
+                .build();
+
+        System.out.println(converterBRL.umrechnen("brl", 95));
+        System.out.println(converterBRL.umrechnen("yen", 95));
+
 
     }
 }
