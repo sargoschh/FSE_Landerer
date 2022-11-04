@@ -2,6 +2,8 @@ public class Main {
     public static void main(String[] args) {
 
 
+        System.out.println("Test ChainOfResponsibility & TemplateMethod:");
+
         IUmrechnen rechnerDollar = new EURO2Dollar();
         IUmrechnen rechnerYen = new EURO2Yen();
         IUmrechnen rechnerSEK = new EURO2SEK();
@@ -12,6 +14,10 @@ public class Main {
         rechnerSEK.setNextConverter(rechnerReal);
 
         System.out.println(rechnerDollar.umrechnen("sek", 95));
+
+        System.out.println();
+        System.out.println("Test Decorator:");
+
 
         WRDecorator decorator = new DecoraterFixFees(rechnerDollar);
 
@@ -27,6 +33,10 @@ public class Main {
 
         System.out.println();
 
+
+        System.out.println("Test Builder:");
+
+
         System.out.println(rechnerDollar.umrechnen("brl", 95));
 
         IUmrechnen converterBRL = new EURO2BrReal.Builder()
@@ -36,6 +46,18 @@ public class Main {
 
         System.out.println(converterBRL.umrechnen("brl", 95));
         System.out.println(converterBRL.umrechnen("yen", 95));
+
+        System.out.println();
+        System.out.println("Test Adapter:");
+
+
+        double[] test = {5.4, 95, 7.6};
+
+        Sammelrechner sammelrechner = new Sammelrechner(decorator);
+        System.out.println(sammelrechner.sammelumrechnen(test, "usd"));
+        System.out.println(decorator.umrechnen("usd", 5.4) +
+                decorator.umrechnen("usd", 95) +
+                decorator.umrechnen("usd", 7.6));
 
 
     }
