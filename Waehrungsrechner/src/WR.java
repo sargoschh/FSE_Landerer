@@ -3,13 +3,17 @@ public abstract class WR implements IUmrechnen{
     private WR nextConverter;
 
     public double umrechnen(String variante, double betrag){
-        double converted = 0.0;
+
+        double converted = 0;
         if(this.zustaendig(variante)) {
             converted = betrag * this.getFaktor();
+            return converted;
+        } else if(this.nextConverter != null){
+            return this.nextConverter.umrechnen(variante, betrag);
         } else {
-            this.nextConverter.umrechnen(variante, betrag);
+            return 0;
         }
-        return converted;
+
     }
 
     public void setNextConverter(WR nextConverter) {
