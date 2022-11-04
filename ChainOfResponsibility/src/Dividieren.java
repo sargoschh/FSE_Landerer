@@ -1,3 +1,6 @@
+/**
+ * Die Klasse Dividieren ist das letzte Kettenglied in der Rechner-Kette!
+ */
 public class Dividieren implements Chain{
 
     private Chain nextInChain;
