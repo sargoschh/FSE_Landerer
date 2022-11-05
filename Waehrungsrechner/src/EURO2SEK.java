@@ -1,5 +1,5 @@
 public class EURO2SEK extends WR {
-    private final String kronen = "SEK";
+    private final Waehrungen kronen = Waehrungen.SEK;
     private double kursKronen = 10.8652;
 
     @Override
@@ -13,7 +13,7 @@ public class EURO2SEK extends WR {
 
     @Override
     public boolean zustaendig(String variante) {
-        if(variante.equalsIgnoreCase(this.kronen)) {
+        if(variante.equalsIgnoreCase(this.kronen.getCode())) {
             return true;
         } else {
             return false;

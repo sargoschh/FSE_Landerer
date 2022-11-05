@@ -22,7 +22,7 @@ public class EURO2BrReal extends WR {
             return converter;
         }
     }
-    private final String real = "BRL";
+    private final Waehrungen real = Waehrungen.BRL;
     private double kursReal = 4.9624;
 
     @Override
@@ -36,7 +36,7 @@ public class EURO2BrReal extends WR {
 
     @Override
     public boolean zustaendig(String variante) {
-        if(variante.equalsIgnoreCase(this.real)) {
+        if(variante.equalsIgnoreCase(this.real.getCode())) {
             return true;
         } else {
             return false;

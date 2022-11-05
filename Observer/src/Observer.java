@@ -8,6 +8,11 @@ public abstract class Observer {
      */
     protected Scoreboard scoreboard;
 
+    public Observer(Scoreboard scoreboard) {
+        this.scoreboard = scoreboard;
+        this.scoreboard.addObserver(this);
+    }
+
     /**
      * Wird in den Unterklassen ausimplementiert.
      */

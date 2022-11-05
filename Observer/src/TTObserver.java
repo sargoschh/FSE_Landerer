@@ -7,8 +7,7 @@ public class TTObserver extends Observer{
      * @param scoreboard - aktuelles Scoreboard
      */
     public TTObserver(Scoreboard scoreboard) {
-        this.scoreboard = scoreboard;
-        this.scoreboard.addObserver(this);
+        super(scoreboard);
 
     }
 

@@ -3,7 +3,8 @@ public enum Waehrungen {
     USD("US Dollar"),
     SEK("Schwedische Krone"),
     YEN("Japanischer Yen"),
-    BRL("Brasilianischer Real");
+    BRL("Brasilianischer Real"),
+    EUR("Euro");
 
 
 

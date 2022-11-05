@@ -4,4 +4,5 @@ public interface IUmrechnen{
     void setFaktor(double faktor);
     boolean zustaendig(String variante);
     void setNextConverter(IUmrechnen nextConverter);
+    void addObserver(Observer observer);
 }

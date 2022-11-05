@@ -1,4 +1,11 @@
-public interface Observer {
+public abstract class Observer {
 
-    void update();
+    protected WR umrechner;
+
+    public Observer(WR umrechner) {
+        this.umrechner = umrechner;
+        this.umrechner.addObserver(this);
+    }
+
+    public abstract void update();
 }

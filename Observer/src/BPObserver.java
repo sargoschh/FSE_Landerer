@@ -7,8 +7,7 @@ public class BPObserver extends Observer{
      * @param scoreboard - aktuelles Scoreboard
      */
     public BPObserver(Scoreboard scoreboard) {
-        this.scoreboard = scoreboard;
-        this.scoreboard.addObserver(this);
+        super(scoreboard);
 
     }
 

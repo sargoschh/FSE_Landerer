@@ -1,14 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class WR implements IUmrechnen {
 
     private IUmrechnen nextConverter;
     private double zielbetrag;
-    private String ausgangswaehrung;
-    private String zielwaehrung;
+    private final Waehrungen ausgangswaehrung = Waehrungen.EUR;
+    protected String zielwaehrung;
     private double ausgangsbetrag;
+    private List<Observer> observerList = new ArrayList<>();
 
     public double umrechnen(String variante, double betrag){
 
         if(this.zustaendig(variante)) {
+            this.ausgangsbetrag = betrag;
             this.zielbetrag = betrag * this.getFaktor();
             return this.zielbetrag;
         } else if(this.nextConverter != null){
@@ -30,20 +35,16 @@ public abstract class WR implements IUmrechnen {
         this.zielbetrag = zielbetrag;
     }
 
-    public String getAusgangswaehrung() {
-        return ausgangswaehrung;
+    public String getAusgangswaehrungBeschreibung() {
+        return ausgangswaehrung.getWaehrungName();
     }
 
-    public void setAusgangswaehrung(String ausgangswaehrung) {
-        this.ausgangswaehrung = ausgangswaehrung;
+    public String getAusgangswaehrungCode() {
+        return ausgangswaehrung.getCode();
     }
 
     public String getZielwaehrung() {
         return zielwaehrung;
-    }
-
-    public void setZielwaehrung(String zielwaehrung) {
-        this.zielwaehrung = zielwaehrung;
     }
 
     public double getAusgangsbetrag() {
@@ -52,5 +53,10 @@ public abstract class WR implements IUmrechnen {
 
     public void setAusgangsbetrag(double ausgangsbetrag) {
         this.ausgangsbetrag = ausgangsbetrag;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        this.observerList.add(observer);
     }
 }

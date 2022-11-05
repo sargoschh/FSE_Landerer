@@ -1,6 +1,6 @@
 public class EURO2Dollar extends WR {
 
-    private Waehrungen dollar = Waehrungen.USD;
+    private final Waehrungen dollar = Waehrungen.USD;
     private double kursDollar = 0.9794;
 
     @Override
@@ -15,6 +15,7 @@ public class EURO2Dollar extends WR {
     @Override
     public boolean zustaendig(String variante) {
         if(variante.equalsIgnoreCase(this.dollar.getCode())) {
+            this.zielwaehrung = this.dollar.getWaehrungName();
             return true;
         } else {
             return false;
