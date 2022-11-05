@@ -13,7 +13,7 @@ public class Main {
         rechnerYen.setNextConverter(rechnerSEK);
         rechnerSEK.setNextConverter(rechnerReal);
 
-        /*System.out.println(rechnerDollar.umrechnen("sek", 95));
+        System.out.println(rechnerDollar.umrechnen("sek", 95));
 
         System.out.println();
         System.out.println("Test Decorator:");
@@ -57,7 +57,7 @@ public class Main {
         System.out.println(sammelrechner.sammelumrechnen(test, "usd"));
         System.out.println(decorator.umrechnen("usd", 5.4) +
                 decorator.umrechnen("usd", 95) +
-                decorator.umrechnen("usd", 7.6));*/
+                decorator.umrechnen("usd", 7.6));
 
         System.out.println();
         System.out.println("Test Observer:");

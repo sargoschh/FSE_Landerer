@@ -36,11 +36,10 @@ public class LogObserver implements IObserver {
     }
 
     public String getMessage(){
-        String msg = "Neue Waehrungsumrechnungen\n";
+        String msg = "Neue Waehrungsumrechnungen\n------------------------------------------------------\n";
         for(WR con : this.converter) {
             for(UmrechnungErgebnis ue : con.getErgebnisse()) {
-                msg += "------------------------------------------------------\n"
-                        + ue.getMessage() +
+                msg += ue.getMessage() +
                         "\n------------------------------------------------------\n";
             }
         }
