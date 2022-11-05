@@ -1,20 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class WR implements IUmrechnen {
+public abstract class WR implements IUmrechnen, IFaktor, IWVerwaltung {
 
     private IUmrechnen nextConverter;
-    private double zielbetrag;
-    private final Waehrungen ausgangswaehrung = Waehrungen.EUR;
-    protected String zielwaehrung;
-    private double ausgangsbetrag;
-    private List<Observer> observerList = new ArrayList<>();
+    private UmrechnungErgebnisList ergebnisList;
+    private ObserverList observerList;
 
     public double umrechnen(String variante, double betrag){
 
         if(this.zustaendig(variante)) {
             this.ausgangsbetrag = betrag;
             this.zielbetrag = betrag * this.getFaktor();
+            this.updateObserver();
             return this.zielbetrag;
         } else if(this.nextConverter != null){
             return this.nextConverter.umrechnen(variante, betrag);
@@ -27,36 +25,17 @@ public abstract class WR implements IUmrechnen {
         this.nextConverter = nextConverter;
     }
 
-    public double getZielbetrag() {
-        return zielbetrag;
+    public void addObserver(IObserver observer) {
+        this.observerList.addObserver(observer);
     }
 
-    public void setZielbetrag(double zielbetrag) {
-        this.zielbetrag = zielbetrag;
+    public void updateObserver() {
+        for(IObserver o : this.observerList.getListObserver()) {
+            o.update();
+        }
     }
 
-    public String getAusgangswaehrungBeschreibung() {
-        return ausgangswaehrung.getWaehrungName();
-    }
-
-    public String getAusgangswaehrungCode() {
-        return ausgangswaehrung.getCode();
-    }
-
-    public String getZielwaehrung() {
-        return zielwaehrung;
-    }
-
-    public double getAusgangsbetrag() {
-        return ausgangsbetrag;
-    }
-
-    public void setAusgangsbetrag(double ausgangsbetrag) {
-        this.ausgangsbetrag = ausgangsbetrag;
-    }
-
-    @Override
-    public void addObserver(Observer observer) {
-        this.observerList.add(observer);
+    public void addErgebnis(UmrechnungErgebnis ergebnis) {
+        this.ergebnisList.addErgebnis(ergebnis);
     }
 }

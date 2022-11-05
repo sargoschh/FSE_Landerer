@@ -1,8 +1,8 @@
 public abstract class WRDecorator extends WR {
 
-    private IUmrechnen decoratedConverter;
+    private WR decoratedConverter;
 
-    public WRDecorator(IUmrechnen decoratedConverter) {
+    public WRDecorator(WR decoratedConverter) {
         this.decoratedConverter = decoratedConverter;
     }
 

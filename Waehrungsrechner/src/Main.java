@@ -4,10 +4,10 @@ public class Main {
 
         System.out.println("Test ChainOfResponsibility & TemplateMethod:");
 
-        IUmrechnen rechnerDollar = new EURO2Dollar();
-        IUmrechnen rechnerYen = new EURO2Yen();
-        IUmrechnen rechnerSEK = new EURO2SEK();
-        IUmrechnen rechnerReal = new EURO2BrReal();
+        WR rechnerDollar = new EURO2Dollar();
+        WR rechnerYen = new EURO2Yen();
+        WR rechnerSEK = new EURO2SEK();
+        WR rechnerReal = new EURO2BrReal();
 
         rechnerDollar.setNextConverter(rechnerYen);
         rechnerYen.setNextConverter(rechnerSEK);
@@ -62,16 +62,15 @@ public class Main {
         System.out.println();
         System.out.println("Test Observer:");
 
-        Observer observer = new LogObserver((WR) rechnerDollar);
+        WR rechner = new EURO2BrReal();
+
+        IObserver observer = new LogObserver();
+        rechnerReal.addObserver(observer);
+        rechnerSEK.addObserver(observer);
+        rechnerYen.addObserver(observer);
         rechnerDollar.umrechnen("usd", 435);
-        observer.update();
-        int o = 0;
-        for(int i = 0; i < Integer.MAX_VALUE; ++i){
-            o = i;
-        }
-        System.out.println(o);
         rechnerDollar.umrechnen("sek", 732);
-        observer.update();
+
 
 
     }

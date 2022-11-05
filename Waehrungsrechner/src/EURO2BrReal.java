@@ -2,10 +2,10 @@ public class EURO2BrReal extends WR {
 
     public static class Builder{
 
-        private IUmrechnen nextConverter;
+        private WR nextConverter;
         private double faktor;
 
-        public Builder setNextConverter(IUmrechnen converter){
+        public Builder setNextConverter(WR converter){
             this.nextConverter = converter;
             return this;
         }
@@ -15,8 +15,8 @@ public class EURO2BrReal extends WR {
             return this;
         }
 
-        public IUmrechnen build(){
-            IUmrechnen converter = new EURO2BrReal();
+        public WR build(){
+            WR converter = new EURO2BrReal();
             converter.setNextConverter(this.nextConverter);
             converter.setFaktor(this.faktor);
             return converter;
