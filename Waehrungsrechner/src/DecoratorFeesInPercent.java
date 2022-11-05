@@ -1,7 +1,7 @@
 public class DecoratorFeesInPercent extends WRDecorator{
 
 
-    public DecoratorFeesInPercent(IUmrechnen decoratedConverter) {
+    public DecoratorFeesInPercent(WR decoratedConverter) {
         super(decoratedConverter);
     }
 

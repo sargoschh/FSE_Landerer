@@ -1,7 +1,7 @@
 public class DecoraterFixFees extends WRDecorator{
 
 
-    public DecoraterFixFees(IUmrechnen decoratedConverter) {
+    public DecoraterFixFees(WR decoratedConverter) {
         super(decoratedConverter);
     }
 

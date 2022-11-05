@@ -65,6 +65,7 @@ public class Main {
         WR rechner = new EURO2BrReal();
 
         IObserver observer = new LogObserver();
+        rechnerDollar.addObserver(observer);
         rechnerReal.addObserver(observer);
         rechnerSEK.addObserver(observer);
         rechnerYen.addObserver(observer);

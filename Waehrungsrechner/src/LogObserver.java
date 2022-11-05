@@ -10,13 +10,15 @@ public class LogObserver implements IObserver {
 
     private final Logger logger = Logger.getLogger("MyLog");
     private FileHandler fh = null;
-    private WRList converter;
+    private List<WR> converter;
 
     public LogObserver() {
 
+        this.converter = new ArrayList<>();
+
         SimpleDateFormat format = new SimpleDateFormat("M-d-y_HHmmss");
         try {
-            fh = new FileHandler("Waehrungsumrechnungen_"
+            fh = new FileHandler("log/Waehrungsumrechnungen_"
                     + format.format(Calendar.getInstance().getTime()) + ".log");
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,15 +36,12 @@ public class LogObserver implements IObserver {
     }
 
     public String getMessage(){
-        String msg = "Neue Waehrungsumrechnungen";
-        int length = this.converter.getListSize();
-        for(WR con : this.converter.getUmrechnungsListe()) {
-            msg += "\nAusgangswaehrung: " + con.getAusgangswaehrungBeschreibung() +
-                    "\nAusgangsbetrag: " + con.getAusgangsbetrag() +
-                    "\nZielwaehrung: " + con.getZielwaehrung() +
-                    "\nZielbetrag: " + con.getZielbetrag();
-            if(length > 1) {
-                msg += "\n";
+        String msg = "Neue Waehrungsumrechnungen\n";
+        for(WR con : this.converter) {
+            for(UmrechnungErgebnis ue : con.getErgebnisse()) {
+                msg += "------------------------------------------------------\n"
+                        + ue.getMessage() +
+                        "\n------------------------------------------------------\n";
             }
         }
         return msg;
@@ -51,6 +50,6 @@ public class LogObserver implements IObserver {
 
     @Override
     public void addUmrechner(WR umrechner) {
-        this.converter.addUmrechner(umrechner);
+        this.converter.add(umrechner);
     }
 }

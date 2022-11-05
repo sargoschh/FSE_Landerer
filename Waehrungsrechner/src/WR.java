@@ -1,19 +1,24 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class WR implements IUmrechnen, IFaktor, IWVerwaltung {
+public abstract class WR implements IUmrechnen, IFaktor{
 
-    private IUmrechnen nextConverter;
+    private WR nextConverter;
     private UmrechnungErgebnisList ergebnisList;
     private ObserverList observerList;
+
+    public WR() {
+        this.ergebnisList = new UmrechnungErgebnisList();
+        this.observerList = new ObserverList();
+    }
 
     public double umrechnen(String variante, double betrag){
 
         if(this.zustaendig(variante)) {
-            this.ausgangsbetrag = betrag;
-            this.zielbetrag = betrag * this.getFaktor();
+            double zielbetrag = betrag * this.getFaktor();
+            this.addErgebnis(betrag, zielbetrag, variante);
             this.updateObserver();
-            return this.zielbetrag;
+            return zielbetrag;
         } else if(this.nextConverter != null){
             return this.nextConverter.umrechnen(variante, betrag);
         } else {
@@ -21,11 +26,12 @@ public abstract class WR implements IUmrechnen, IFaktor, IWVerwaltung {
         }
     }
 
-    public void setNextConverter(IUmrechnen nextConverter) {
+    public void setNextConverter(WR nextConverter) {
         this.nextConverter = nextConverter;
     }
 
     public void addObserver(IObserver observer) {
+        observer.addUmrechner(this);
         this.observerList.addObserver(observer);
     }
 
@@ -37,5 +43,18 @@ public abstract class WR implements IUmrechnen, IFaktor, IWVerwaltung {
 
     public void addErgebnis(UmrechnungErgebnis ergebnis) {
         this.ergebnisList.addErgebnis(ergebnis);
+    }
+
+    public void addErgebnis(double ausgangsbetrag, double zielbetrag, String zielwaehrung) {
+        UmrechnungErgebnis ergebnis = new UmrechnungErgebnis.Builder()
+                .setZielbetrag(zielbetrag)
+                .setZielwaehrung(zielwaehrung)
+                .setAusgangsbetrag(ausgangsbetrag)
+                .build();
+        this.ergebnisList.addErgebnis(ergebnis);
+    }
+
+    public List<UmrechnungErgebnis> getErgebnisse(){
+        return this.ergebnisList.getErgebnisList();
     }
 }

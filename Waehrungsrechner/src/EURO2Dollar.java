@@ -15,7 +15,6 @@ public class EURO2Dollar extends WR {
     @Override
     public boolean zustaendig(String variante) {
         if(variante.equalsIgnoreCase(this.dollar.getCode())) {
-            this.zielwaehrung = this.dollar.getWaehrungName();
             return true;
         } else {
             return false;
