@@ -16,7 +16,7 @@ public abstract class WR implements IUmrechnen, IFaktor{
 
         if(this.zustaendig(variante)) {
             double zielbetrag = betrag * this.getFaktor();
-            this.addErgebnis(betrag, zielbetrag, variante);
+            this.addErgebnis(betrag, zielbetrag, variante, this.getFaktor());
             this.updateObserver();
             return zielbetrag;
         } else if(this.nextConverter != null){
@@ -45,11 +45,12 @@ public abstract class WR implements IUmrechnen, IFaktor{
         this.ergebnisList.addErgebnis(ergebnis);
     }
 
-    public void addErgebnis(double ausgangsbetrag, double zielbetrag, String zielwaehrung) {
+    public void addErgebnis(double ausgangsbetrag, double zielbetrag, String zielwaehrung, double faktor) {
         UmrechnungErgebnis ergebnis = new UmrechnungErgebnis.Builder()
                 .setZielbetrag(zielbetrag)
                 .setZielwaehrung(zielwaehrung)
                 .setAusgangsbetrag(ausgangsbetrag)
+                .setFaktor(faktor)
                 .build();
         this.ergebnisList.addErgebnis(ergebnis);
     }

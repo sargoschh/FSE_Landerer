@@ -3,7 +3,8 @@ public class UmrechnungErgebnis implements IWVerwaltung{
     public static class Builder{
         private double ausgangsbetrag;
         private double zielbetrag;
-        protected String zielwaehrung;
+        private String zielwaehrung;
+        private double faktor;
 
         public Builder setZielbetrag(double zielbetrag) {
             this.zielbetrag = zielbetrag;
@@ -20,11 +21,17 @@ public class UmrechnungErgebnis implements IWVerwaltung{
             return this;
         }
 
+        public Builder setFaktor(double faktor){
+            this.faktor = faktor;
+            return this;
+        }
+
         public UmrechnungErgebnis build(){
             UmrechnungErgebnis ergebnis = new UmrechnungErgebnis();
             ergebnis.setAusgangsbetrag(this.ausgangsbetrag);
             ergebnis.setZielwaehrung(this.zielwaehrung);
             ergebnis.setZielbetrag(this.zielbetrag);
+            ergebnis.setFaktor(this.faktor);
             return ergebnis;
         }
 
@@ -32,11 +39,22 @@ public class UmrechnungErgebnis implements IWVerwaltung{
     }
     private double zielbetrag;
     private final Waehrungen ausgangswaehrung = Waehrungen.EUR;
-    protected Waehrungen zielwaehrung;
+    private Waehrungen zielwaehrung;
     private double ausgangsbetrag;
+    private double faktor;
 
     public double getZielbetrag() {
         return zielbetrag;
+    }
+
+    @Override
+    public void setFaktor(double faktor) {
+        this.faktor = faktor;
+    }
+
+    @Override
+    public double getFaktor() {
+        return this.faktor;
     }
 
     public void setZielbetrag(double zielbetrag) {
@@ -83,6 +101,7 @@ public class UmrechnungErgebnis implements IWVerwaltung{
     public String getMessage() {
         return "Ausgangswaehrung: " + this.getAusgangswaehrungName() +
                 "\nAusgangsbetrag: " + this.formatDouble(this.getAusgangsbetrag()) +
+                "\nUmrechnungsfaktor: " + this.getFaktor() +
                 "\nZielwaehrung: " + this.getZielwaehrungName() +
                 "\nZielbetrag: " + this.formatDouble(this.getZielbetrag());
     }

@@ -1,5 +1,7 @@
 public interface IWVerwaltung {
 
+    void setFaktor(double Faktor);
+    double getFaktor();
     public void setZielbetrag(double zielbetrag);
     double getZielbetrag();
     String getAusgangswaehrungName();
