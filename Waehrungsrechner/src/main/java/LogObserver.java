@@ -1,20 +1,15 @@
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class LogObserver implements IObserver {
+public class LogObserver extends AObserver {
 
     private final Logger logger = Logger.getLogger("MyLog");
     private FileHandler fh = null;
-    private List<WR> converter;
 
     public LogObserver() {
-
-        this.converter = new ArrayList<>();
 
         SimpleDateFormat format = new SimpleDateFormat("M-d-y_HHmmss");
         try {
@@ -30,25 +25,7 @@ public class LogObserver implements IObserver {
 
     @Override
     public void update() {
-
-        this.logger.info(getMessage());
-
+        this.logger.info(this.getMessage());
     }
 
-    public String getMessage(){
-        String msg = "Neue Waehrungsumrechnungen\n------------------------------------------------------\n";
-        for(WR con : this.converter) {
-            for(UmrechnungErgebnis ue : con.getErgebnisse()) {
-                msg += ue.getMessage() +
-                        "\n------------------------------------------------------\n";
-            }
-        }
-        return msg;
-
-    }
-
-    @Override
-    public void addUmrechner(WR umrechner) {
-        this.converter.add(umrechner);
-    }
 }

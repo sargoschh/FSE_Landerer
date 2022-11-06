@@ -62,15 +62,23 @@ public class Main {
         System.out.println();
         System.out.println("Test Observer:");
 
-        WR rechner = new EURO2BrReal();
-
-        IObserver observer = new LogObserver();
+        AObserver observer = new LogObserver();
         rechnerDollar.addObserver(observer);
         rechnerReal.addObserver(observer);
         rechnerSEK.addObserver(observer);
         rechnerYen.addObserver(observer);
+
+
+        AObserver atomObserver = new AtomObserver();
+        rechnerDollar.addObserver(atomObserver);
+        rechnerReal.addObserver(atomObserver);
+        rechnerSEK.addObserver(atomObserver);
+        rechnerYen.addObserver(atomObserver);
+
         rechnerDollar.umrechnen("usd", 435);
         rechnerDollar.umrechnen("sek", 732);
+        rechnerDollar.umrechnen("yen", 13.5);
+
 
 
 

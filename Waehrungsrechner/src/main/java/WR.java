@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class WR implements IUmrechnen, IFaktor{
@@ -30,13 +29,13 @@ public abstract class WR implements IUmrechnen, IFaktor{
         this.nextConverter = nextConverter;
     }
 
-    public void addObserver(IObserver observer) {
+    public void addObserver(AObserver observer) {
         observer.addUmrechner(this);
         this.observerList.addObserver(observer);
     }
 
     public void updateObserver() {
-        for(IObserver o : this.observerList.getListObserver()) {
+        for(AObserver o : this.observerList.getListObserver()) {
             o.update();
         }
     }

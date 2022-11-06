@@ -6,6 +6,7 @@ public class UmrechnungErgebnis implements IWVerwaltung{
         private String zielwaehrung;
         private double faktor;
 
+
         public Builder setZielbetrag(double zielbetrag) {
             this.zielbetrag = zielbetrag;
             return this;
@@ -42,6 +43,7 @@ public class UmrechnungErgebnis implements IWVerwaltung{
     private Waehrungen zielwaehrung;
     private double ausgangsbetrag;
     private double faktor;
+    private boolean alreadyInLog = false;
 
     public double getZielbetrag() {
         return zielbetrag;
@@ -91,6 +93,16 @@ public class UmrechnungErgebnis implements IWVerwaltung{
 
     public void setAusgangsbetrag(double ausgangsbetrag) {
         this.ausgangsbetrag = ausgangsbetrag;
+    }
+
+    @Override
+    public boolean isLogged() {
+        this.alreadyInLog = true;
+        return this.alreadyInLog;
+    }
+
+    public boolean isAlreadyInLog() {
+        return this.alreadyInLog;
     }
 
     public String formatDouble(double betrag){

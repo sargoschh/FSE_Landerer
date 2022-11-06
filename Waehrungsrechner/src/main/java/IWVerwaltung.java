@@ -11,5 +11,6 @@ public interface IWVerwaltung {
     public void setZielwaehrung(String zielwaehrung);
     double getAusgangsbetrag();
     public void setAusgangsbetrag(double ausgangsbetrag);
+    public boolean isLogged();
 
 }
