@@ -1,4 +1,7 @@
-public class EURO2Dollar extends WR {
+/**
+ * Unterklasse von AWR. Sorgt für die Umrechnung von Euro in US Dollar.
+ */
+public class EURO2Dollar extends AWR {
 
     private final Waehrungen dollar = Waehrungen.USD;
     private double kursDollar = 0.9794;
@@ -12,6 +15,11 @@ public class EURO2Dollar extends WR {
         this.kursDollar = faktor;
     }
 
+    /**
+     * Prüft, ob der US Dollar der gewünschten Zielwährung entspricht
+     * @param variante gewünschte Zielwährung als String
+     * @return true oder false
+     */
     @Override
     public boolean zustaendig(String variante) {
         if(variante.equalsIgnoreCase(this.dollar.getCode())) {

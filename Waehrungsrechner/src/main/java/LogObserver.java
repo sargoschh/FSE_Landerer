@@ -9,6 +9,10 @@ public class LogObserver extends AObserver {
     private final Logger logger = Logger.getLogger("MyLog");
     private FileHandler fh = null;
 
+    /**
+     * Erstellt einen neuen Logger, der bei Aufruf von update() eine neue
+     * LogDatei erstellt
+     */
     public LogObserver() {
 
         SimpleDateFormat format = new SimpleDateFormat("M-d-y_HHmmss");
@@ -23,6 +27,9 @@ public class LogObserver extends AObserver {
         logger.addHandler(fh);
     }
 
+    /**
+     * Die LogDatei wird erstellt.
+     */
     @Override
     public void update() {
         this.logger.info(this.getMessage());

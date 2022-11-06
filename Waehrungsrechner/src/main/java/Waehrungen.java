@@ -1,3 +1,6 @@
+/**
+ * Enum für Währungen. Beliebig viele Währungen können hinzugefügt werden.
+ */
 public enum Waehrungen {
 
     USD("US Dollar"),

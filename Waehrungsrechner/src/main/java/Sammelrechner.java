@@ -1,3 +1,6 @@
+/**
+ * Eigentlicher Sammelrechner
+ */
 public class Sammelrechner implements ISammelumrechnung{
 
     private IUmrechnen rechner;
@@ -6,6 +9,12 @@ public class Sammelrechner implements ISammelumrechnung{
         this.rechner = rechner;
     }
 
+    /**
+     * Berechnet für eine Liste von Werten den entsprechenden Wert in der Zielwährung und summiert diese auf.
+     * @param betraege Liste von Double Werten
+     * @param variante Zielwährung als String
+     * @return
+     */
     @Override
     public double sammelumrechnen(double[] betraege, String variante) {
         double converted = 0;

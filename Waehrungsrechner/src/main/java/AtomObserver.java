@@ -6,13 +6,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Unterklasse von AObserver. Erstellt einen AtomFeed der Ergebnisse
+ */
 public class AtomObserver extends AObserver {
 
     private List<Entry> entries = new ArrayList<>();
     private List<Content> contents = new ArrayList<>();
     private Feed feed = new Feed("Log");
 
-
+    /**
+     * Erstellt, beim Aufruf, einen neuen AtomFeed. Diesem wird eine Liste von
+     * Einträgen und Contents mitgegeben.
+     */
     @Override
     public void update() {
         Entry entry = this.newEntry();
@@ -24,6 +30,10 @@ public class AtomObserver extends AObserver {
         System.out.println(this.feed.toString());
     }
 
+    /**
+     * Erstellt einen neuen Eintrag für den Feed
+     * @return Objekt vom Typ Entry
+     */
     public Entry newEntry(){
         Entry entry = new Entry();
         entry.setCreated(new Date());
@@ -32,6 +42,10 @@ public class AtomObserver extends AObserver {
         return entry;
     }
 
+    /**
+     * Erstellt neuen Content für den Feed
+     * @param msg String mit Ergebnissen
+     */
     public void newContent(String msg) {
         Content content = new Content();
         content.setValue(msg + "\n");

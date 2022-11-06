@@ -4,11 +4,13 @@ public class Main {
 
         System.out.println("Test ChainOfResponsibility & TemplateMethod:");
 
-        WR rechnerDollar = new EURO2Dollar();
-        WR rechnerYen = new EURO2Yen();
-        WR rechnerSEK = new EURO2SEK();
-        WR rechnerReal = new EURO2BrReal();
+        //neue Währungsrechner werden erstellt
+        AWR rechnerDollar = new EURO2Dollar();
+        AWR rechnerYen = new EURO2Yen();
+        AWR rechnerSEK = new EURO2SEK();
+        AWR rechnerReal = new EURO2BrReal();
 
+        //den Rechnern wird ein nächstes Kettenglied hinzugefügt
         rechnerDollar.setNextConverter(rechnerYen);
         rechnerYen.setNextConverter(rechnerSEK);
         rechnerSEK.setNextConverter(rechnerReal);
@@ -18,15 +20,17 @@ public class Main {
         System.out.println();
         System.out.println("Test Decorator:");
 
-
-        WRDecorator decorator = new DecoraterFixFees(rechnerDollar);
+        //neuer Decorator wird erstellt und auf den Währungsrechner rechnerDollar angewendet
+        AWRDecorator decorator = new DecoraterFixFees(rechnerDollar);
 
         System.out.println(decorator.umrechnen("sek", 95));
 
-        WRDecorator decorator1 = new DecoratorFeesInPercent(rechnerDollar);
+        //neuer Decorator wird erstellt und auf den Währungsrechner rechnerDollar angewendet
+        AWRDecorator decorator1 = new DecoratorFeesInPercent(rechnerDollar);
 
         System.out.println(decorator1.umrechnen("sek", 95));
 
+        //neuer Faktor wird gesetzt
         rechnerSEK.setFaktor(50);
 
         System.out.println(rechnerDollar.umrechnen("sek", 95));
@@ -39,6 +43,7 @@ public class Main {
 
         System.out.println(rechnerDollar.umrechnen("brl", 95));
 
+        //Mithilfe des Builders wird ein neuer Währungsrechner für Real erstellt
         IUmrechnen converterBRL = new EURO2BrReal.Builder()
                 .setFaktor(8)
                 .setNextConverter(new EURO2Yen())
@@ -53,6 +58,7 @@ public class Main {
 
         double[] test = {5.4, 95, 7.6};
 
+        //Ein neuer Sammelrechner wird erstellt - mit diesem wird eine Liste von Werten berechnet
         Sammelrechner sammelrechner = new Sammelrechner(decorator);
         System.out.println(sammelrechner.sammelumrechnen(test, "usd"));
         System.out.println(decorator.umrechnen("usd", 5.4) +
@@ -62,13 +68,14 @@ public class Main {
         System.out.println();
         System.out.println("Test Observer:");
 
-        AObserver observer = new LogObserver();
-        rechnerDollar.addObserver(observer);
-        rechnerReal.addObserver(observer);
-        rechnerSEK.addObserver(observer);
-        rechnerYen.addObserver(observer);
+        //ein neuer LogObserver wird erstellt und den Währungsrechnern zugeteilt
+        AObserver logObserver = new LogObserver();
+        rechnerDollar.addObserver(logObserver);
+        rechnerReal.addObserver(logObserver);
+        rechnerSEK.addObserver(logObserver);
+        rechnerYen.addObserver(logObserver);
 
-
+        //ein neuer AtomObserver wird erstellt und den Währungsrechnern zugeteilt
         AObserver atomObserver = new AtomObserver();
         rechnerDollar.addObserver(atomObserver);
         rechnerReal.addObserver(atomObserver);

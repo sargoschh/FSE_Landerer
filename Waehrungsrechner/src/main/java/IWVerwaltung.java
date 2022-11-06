@@ -1,16 +1,62 @@
 public interface IWVerwaltung {
+    /**
+     * Setzt den Faktor
+     * @param faktor Faktor als Double
+     */
+    void setFaktor(double faktor);
 
-    void setFaktor(double Faktor);
+    /**
+     * Liefert den Faktor
+     * @return Faktor als Double
+     */
     double getFaktor();
-    public void setZielbetrag(double zielbetrag);
+
+    /**
+     * Setzt den Zielbetrag
+     * @param zielbetrag Zielbetrag als Double
+     */
+    void setZielbetrag(double zielbetrag);
+
+    /**
+     * Liefert den Zielbetrag
+     * @return Zielbetrag als Double
+     */
     double getZielbetrag();
+
+    /**
+     * Liefert den Namen der Ausgangswährung
+     * @return Ausgangswährung als String
+     */
     String getAusgangswaehrungName();
-    String getAusgangswaehrungCode();
+
+    /**
+     * Liefert den Namen der Zielwährung
+     * @return Zielwährung als String
+     */
     String getZielwaehrungName();
-    String getZielwaehrungCode();
-    public void setZielwaehrung(String zielwaehrung);
+
+    /**
+     * Setzt die Zielwährung
+     * @param zielwaehrung Zielwährung als String
+     */
+    void setZielwaehrung(String zielwaehrung);
+
+    /**
+     * Liefert den Ausgangsbetrag
+     * @return Ausgangsbetrag als Double
+     */
     double getAusgangsbetrag();
-    public void setAusgangsbetrag(double ausgangsbetrag);
-    public boolean isLogged();
+
+    /**
+     * Setzt den Ausgangsbetrag
+     * @param ausgangsbetrag Ausgangsbetrag als Double
+     */
+    void setAusgangsbetrag(double ausgangsbetrag);
+
+    /**
+     * Prüft, ob das Ergebnis bereits Gelogged wurde
+     * @return true oder false
+     */
+    boolean isLogged();
 
 }
