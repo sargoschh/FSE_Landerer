@@ -3,7 +3,7 @@
  */
 public class EURO2Dollar extends AWR {
 
-    private final Waehrungen dollar = Waehrungen.USD;
+    private final Waehrungen US_DOLLAR = Waehrungen.USD;
     private double kursDollar = 0.9794;
 
     @Override
@@ -22,7 +22,7 @@ public class EURO2Dollar extends AWR {
      */
     @Override
     public boolean zustaendig(String variante) {
-        if(variante.equalsIgnoreCase(this.dollar.getCode())) {
+        if(variante.equalsIgnoreCase(this.US_DOLLAR.getCode())) {
             return true;
         } else {
             return false;

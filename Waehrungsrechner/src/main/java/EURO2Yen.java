@@ -2,7 +2,7 @@
  * Unterklasse von AWR. Sorgt für die Umrechnung von Euro in japanische YEN.
  */
 public class EURO2Yen extends AWR {
-    private final Waehrungen yen = Waehrungen.YEN;
+    private final Waehrungen J_YEN = Waehrungen.YEN;
     private double kursYen = 144.9060;
 
     @Override
@@ -21,7 +21,7 @@ public class EURO2Yen extends AWR {
      */
     @Override
     public boolean zustaendig(String variante) {
-        if(variante.equalsIgnoreCase(this.yen.getCode())) {
+        if(variante.equalsIgnoreCase(this.J_YEN.getCode())) {
             return true;
         } else {
             return false;
