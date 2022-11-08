@@ -1,6 +1,11 @@
 /**
  * Abstrakte Klasse WRDecorator dient als Mutterklasse für alle Decorator.
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - abstrakte Klasse hat nur Methoden, die den
+ * Decorator betreffen
+ */
 public abstract class AWRDecorator extends AWR {
 
     private AWR decoratedConverter;

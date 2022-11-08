@@ -3,6 +3,11 @@ import java.util.List;
 /**
  * Abstrakte Klasse Währungsrechner dient als Mutterklasse für alle Rechner.
  */
+
+/*
+ * SOLID - Prinzip
+ * S - wurde nicht eingehalten - Klasse hat mehrere Aufgaben
+ */
 public abstract class AWR implements IUmrechnen, IFaktor{
 
     private AWR nextConverter;

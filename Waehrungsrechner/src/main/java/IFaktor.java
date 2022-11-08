@@ -1,6 +1,11 @@
 /**
  * Interface für die Verarbeitung des Faktors
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Interface hat nur Methoden, die den
+ * Faktor betreffen
+ */
 public interface IFaktor {
     /**
      * Liefert den Faktor der Umrechnung zurück

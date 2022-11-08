@@ -3,7 +3,11 @@ import java.util.Calendar;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die den
+ * LogObserver betreffen
+ */
 public class LogObserver extends AObserver {
 
     private final Logger logger = Logger.getLogger("MyLog");

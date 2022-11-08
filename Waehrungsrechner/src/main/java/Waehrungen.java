@@ -1,6 +1,11 @@
 /**
  * Enum für Währungen. Beliebig viele Währungen können hinzugefügt werden.
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur die Aufgabe, die
+ * unterschiedlichen Währungen zu verarbeiten und bereitzustellen.
+ */
 public enum Waehrungen {
 
     USD("US Dollar"),

@@ -1,6 +1,11 @@
 /**
  * Interface für den späteren Währungsrechner
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Interface hat nur Methoden, die den
+ * Umrechner betreffen
+ */
 public interface IUmrechnen{
     /**
      * Rechnet den Ausgangsbetrag mit dem gewünschten Faktor in die neue Währung um.

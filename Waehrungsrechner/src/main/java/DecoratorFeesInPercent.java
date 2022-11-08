@@ -2,6 +2,11 @@
  * Unterklasse von AWRDecorator. Addiert zum berechneten Zielbetrag eine Gebühr von 0.5%.
  * Genaue Beschreibung der Methoden in der Mutterklasse.
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die den
+ * Decorator betreffen
+ */
 public class DecoratorFeesInPercent extends AWRDecorator {
 
 

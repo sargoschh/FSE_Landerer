@@ -1,3 +1,8 @@
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die das
+ * UmrechnungErgebnis betreffen
+ */
 public class UmrechnungErgebnis implements IWVerwaltung{
 
     /**

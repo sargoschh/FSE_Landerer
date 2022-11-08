@@ -4,6 +4,11 @@ import java.util.List;
 /**
  * Vereinfacht die Verarbeitung einer Liste von UmrechnungErgebnissen.
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die die
+ * Verarbeitung der UmrechnungErgebnisList betreffen
+ */
 public class UmrechnungErgebnisList {
 
     private List<UmrechnungErgebnis> ergebnisList;

@@ -4,6 +4,12 @@ import java.util.List;
 /**
  * Dient als Mutterklasse für alle Observer
  */
+
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - abstrakte Klasse hat nur Methoden, die den
+ * Observer betreffen
+ */
 public abstract class AObserver {
 
     private List<AWR> converter = new ArrayList<>();

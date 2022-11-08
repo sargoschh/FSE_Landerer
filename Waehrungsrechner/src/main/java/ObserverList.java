@@ -4,6 +4,11 @@ import java.util.List;
 /**
  * Vereinfacht die Verarbeitung einer Liste von Observer.
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die die
+ * Verarbeitung der ObserverList betreffen
+ */
 public class ObserverList {
 
     private ArrayList<AObserver> observerList;

@@ -1,6 +1,11 @@
 /**
  * Eigentlicher Sammelrechner
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die den
+ * Sammelrechner betreffen
+ */
 public class Sammelrechner implements ISammelumrechnung{
 
     private IUmrechnen rechner;

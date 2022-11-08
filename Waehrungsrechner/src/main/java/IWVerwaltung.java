@@ -1,3 +1,8 @@
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Interface hat nur Methoden, die das
+ * Verwalten des Umrechnungsergebnisses betreffen
+ */
 public interface IWVerwaltung {
     /**
      * Setzt den Faktor

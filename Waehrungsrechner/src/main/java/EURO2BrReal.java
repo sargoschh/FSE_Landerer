@@ -1,6 +1,11 @@
 /**
  * Unterklasse von AWR. Sorgt für die Umrechnung von Euro in Brasilianische Real.
  */
+/*
+ * SOLID - Prinzip
+ * S - ich bin mir nicht sicher, ob das Prinzip eingehalten
+ * wurde - Klasse hat mehrere Aufgaben
+ */
 public class EURO2BrReal extends AWR {
 
     /**

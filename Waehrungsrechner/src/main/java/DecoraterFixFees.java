@@ -2,6 +2,11 @@
  * Unterklasse von AWRDecorator. Addiert zum berechneten Zielbetrag eine fixe Gebühr von 10€.
  * Genaue Beschreibung der Methoden in der Mutterklasse.
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die den
+ * Decorator betreffen
+ */
 public class DecoraterFixFees extends AWRDecorator {
 
 

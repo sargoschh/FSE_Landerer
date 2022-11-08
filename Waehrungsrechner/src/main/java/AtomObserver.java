@@ -9,6 +9,11 @@ import java.util.List;
 /**
  * Unterklasse von AObserver. Erstellt einen AtomFeed der Ergebnisse
  */
+/*
+ * SOLID - Prinzip
+ * S - wurde eingehalten - Klasse hat nur Methoden, die den
+ * AtomObserver betreffen
+ */
 public class AtomObserver extends AObserver {
 
     private List<Entry> entries = new ArrayList<>();

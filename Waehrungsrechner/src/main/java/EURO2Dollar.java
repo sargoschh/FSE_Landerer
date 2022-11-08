@@ -1,6 +1,11 @@
 /**
  * Unterklasse von AWR. Sorgt für die Umrechnung von Euro in US Dollar.
  */
+/*
+ * SOLID - Prinzip
+ * S - ich bin mir nicht sicher, ob das Prinzip eingehalten
+ * wurde - Klasse hat mehrere Aufgaben
+ */
 public class EURO2Dollar extends AWR {
 
     private final Waehrungen US_DOLLAR = Waehrungen.USD;
